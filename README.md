@@ -12,7 +12,7 @@ There was never a calendar that I was satisfied with, but I needed a way to trac
 - Displays upcoming events
 - Deletes assignments a day after they're completed/time passed
 
-![System diagram](docs/diagram.png)
+![System diagram](docs/CS-193-Project.drawio)
 
 ## Tech Stack
 
