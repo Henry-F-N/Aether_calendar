@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="QOlsTxcF5tAODZg61aWn">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="o-qaG2lnA5777vEzoBN2-15" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-16" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;" target="IQ4Qb-3oy7nkCde8UrbR-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-17" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="IQ4Qb-3oy7nkCde8UrbR-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-2" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="The app displays all upcoming assignments" vertex="1">
+          <mxGeometry height="80" width="120" x="450" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-7" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-4" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="The app accesses the database" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-6" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-5" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Fetches upcoming events" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-14" edge="1" parent="1" source="IQ4Qb-3oy7nkCde8UrbR-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;exitX=0.491;exitY=0.842;exitDx=0;exitDy=0;exitPerimeter=0;" target="o-qaG2lnA5777vEzoBN2-11" value="">
+          <mxGeometry relative="1" x="0.4616" as="geometry">
+            <mxPoint x="710" y="360" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-27" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-26" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-10" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="The event time passes" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-13" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-11" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="The app prompts for data (e.g. name, due date)" vertex="1">
+          <mxGeometry height="80" width="120" x="650" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-25" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-12" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="The info gets stored in the database" vertex="1">
+          <mxGeometry height="60" width="120" x="650" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-21" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-18" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="The database marks the assignment as complete" vertex="1">
+          <mxGeometry height="60" width="120" x="250" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-23" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-20" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="Assignment gets greyed out" vertex="1">
+          <mxGeometry height="80" width="120" x="250" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-22" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="After a day, the assignment/event is forgotten by the database" vertex="1">
+          <mxGeometry height="60" width="120" x="250" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-24" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="The new thing is dispayed" vertex="1">
+          <mxGeometry height="80" width="120" x="650" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-28" edge="1" parent="1" source="o-qaG2lnA5777vEzoBN2-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o-qaG2lnA5777vEzoBN2-26" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;shapeInside=1;fixedSize=1;" value="The event gets greyed out on the app" vertex="1">
+          <mxGeometry height="80" width="120" x="450" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ4Qb-3oy7nkCde8UrbR-2" edge="1" parent="1" source="IQ4Qb-3oy7nkCde8UrbR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ4Qb-3oy7nkCde8UrbR-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="User opens the database" vertex="1">
+          <mxGeometry height="80" width="120" x="240" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ4Qb-3oy7nkCde8UrbR-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User adds a new event/assignment" vertex="1">
+          <mxGeometry height="60" width="120" x="650" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ4Qb-3oy7nkCde8UrbR-5" edge="1" parent="1" source="IQ4Qb-3oy7nkCde8UrbR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="o-qaG2lnA5777vEzoBN2-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IQ4Qb-3oy7nkCde8UrbR-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User marks an assignment as complete" vertex="1">
+          <mxGeometry height="60" width="120" x="251" y="291" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
