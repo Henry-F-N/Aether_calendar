@@ -17,3 +17,45 @@ import './index.css';
 console.log(
   '👋 This message is being logged by the renderer process, included via Vite',
 );
+
+const form = document.getElementById('form');
+const output = document.getElementById('output');
+
+async function refresh() {
+  const rows = await window.api.listAssignments();
+  output.replaceChildren(
+    ...rows.map((r) => {
+      const li = document.createElement('li');
+      li.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}`;
+      return li;
+    })
+  );
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault(); // stops the page from reloading
+
+  try {
+
+    if (document.getElementById('notes').value == null) {
+      await window.api.addAssignment({
+        assignment: document.getElementById('name').value,
+        due: document.getElementById('due').value,
+        description: "No Description Given"
+      });
+    } else {
+      await window.api.addAssignment({
+        assignment: document.getElementById('name').value,
+        due: document.getElementById('due').value,
+        description: document.getElementById('notes').value
+      });
+    }
+    
+
+    form.reset();
+    refresh();
+  } catch (err) {
+    console.error(err);
+  }
+});
+refresh();
