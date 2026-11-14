@@ -8,4 +8,5 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('api', {
   addAssignment: (data) => ipcRenderer.invoke('assignments:add', data),
   listAssignments: () => ipcRenderer.invoke('assignments:list'),
+  deleteAssignment: (id) => ipcRenderer.invoke('assignment:remove', id),
 });

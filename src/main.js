@@ -37,6 +37,19 @@ function registerIpcHandlers() {
   ipcMain.handle('assignments:list', () => {
     return db.prepare('SELECT * FROM assignments ORDER BY due').all();
   });
+
+  ipcMain.handle('assignment:remove', (event, id ) => {
+    console.log('received', typeof id, id);
+    if (!Number.isInteger(id)) {
+      throw new Error("must be valid ID");
+    }
+
+    const info = db
+      .prepare('DELETE FROM assignments WHERE id = ?')
+      .run(id);
+    
+    return true;
+  });
 }
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.

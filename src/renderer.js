@@ -23,13 +23,33 @@ const output = document.getElementById('output');
 
 async function refresh() {
   const rows = await window.api.listAssignments();
-  output.replaceChildren(
+  assignmentList.replaceChildren(
     ...rows.map((r) => {
       const li = document.createElement('li');
-      li.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}`;
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.dataset.id = r.id;
+      const text = document.createElement('span');
+      text.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}, ID ${r.id}`;
+      li.append(checkbox, text);
       return li;
     })
   );
+  assignmentList.addEventListener('change', async (event) => {
+    event.preventDefault();
+    if (!event.target.matches('input[type="checkbox"]')) return;
+    if (event.target.checked) {
+      try {
+        const id = event.target.dataset.id;
+        console.log('sending', Number(id));
+        await window.api.deleteAssignment(Number(id))
+        refresh();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    
+  });
 }
 
 form.addEventListener('submit', async (e) => {
@@ -37,7 +57,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
 
-    if (document.getElementById('notes').value == null) {
+    if (document.getElementById('notes').value.trim() === "") {
       await window.api.addAssignment({
         assignment: document.getElementById('name').value,
         due: document.getElementById('due').value,

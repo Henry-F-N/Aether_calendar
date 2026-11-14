@@ -6,3 +6,9 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+#assignmentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
