@@ -39,7 +39,6 @@ function registerIpcHandlers() {
   });
 
   ipcMain.handle('assignment:remove', (event, id ) => {
-    console.log('received', typeof id, id);
     if (!Number.isInteger(id)) {
       throw new Error("must be valid ID");
     }

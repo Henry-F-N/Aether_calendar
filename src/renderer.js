@@ -30,7 +30,7 @@ async function refresh() {
       checkbox.type = 'checkbox';
       checkbox.dataset.id = r.id;
       const text = document.createElement('span');
-      text.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}, ID ${r.id}`;
+      text.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}`;
       li.append(checkbox, text);
       return li;
     })
@@ -41,7 +41,6 @@ async function refresh() {
     if (event.target.checked) {
       try {
         const id = event.target.dataset.id;
-        console.log('sending', Number(id));
         await window.api.deleteAssignment(Number(id))
         refresh();
       } catch (err) {
@@ -57,17 +56,23 @@ form.addEventListener('submit', async (e) => {
 
   try {
 
-    if (document.getElementById('notes').value.trim() === "") {
+    const asgn = document.getElementById('name').value;
+    const due = document.getElementById('due').value;
+    const note = document.getElementById('notes').value;
+
+    if (asgn.trim() === "" || due.trim() === "") {
+      valid.replaceChildren("Please enter a valid date and time");
+    } else if (note.trim() === "") {
       await window.api.addAssignment({
-        assignment: document.getElementById('name').value,
-        due: document.getElementById('due').value,
+        assignment: asgn,
+        due: document.due,
         description: "No Description Given"
       });
     } else {
       await window.api.addAssignment({
-        assignment: document.getElementById('name').value,
-        due: document.getElementById('due').value,
-        description: document.getElementById('notes').value
+        assignment: asgn,
+        due: due,
+        description: note
       });
     }
     
