@@ -13,7 +13,7 @@
  */
 
 import './index.css';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format, formatDistanceToNow, parse, isValid } from 'date-fns';
 
 console.log(
   '👋 This message is being logged by the renderer process, included via Vite',
@@ -39,9 +39,8 @@ async function refresh() {
       checkbox.type = 'checkbox';
       checkbox.dataset.id = r.id;
       const text = document.createElement('span');
-      const dates = r.due.split("/");
-      const timeUntilDue = new Date(dates[0], dates[1], dates[2]);
-      text.textContent = `${r.assignment}, due ${formatDistanceToNow(timeUntilDue, { addSuffix: true })}, Description ${r.description}`;
+      const parsed = parse(r.due, "yyyy/MM/dd", new Date());
+      text.textContent = `${r.assignment}, due ${formatDistanceToNow(parsed, { addSuffix: true })}, Description ${r.description}`;
       li.append(checkbox, text);
       return li;
     })
@@ -67,25 +66,35 @@ form.addEventListener('submit', async (e) => {
 
   try {
 
+    valid.replaceChildren();
+
     const asgn = document.getElementById('name').value;
     const due = document.getElementById('due').value;
     const note = document.getElementById('notes').value;
 
-    if (asgn.trim() === "" || due.trim() === "") {
-      valid.replaceChildren("Please enter a valid date and time");
-    } else if (note.trim() === "") {
-      await window.api.addAssignment({
-        assignment: asgn,
-        due: document.due,
-        description: "No Description Given"
-      });
+    if (due.trim() === "") {
+      valid.replaceChildren("Please enter a due date");
     } else {
-      await window.api.addAssignment({
-        assignment: asgn,
-        due: due,
-        description: note
-      });
+      const parsed = parse(due, "yyyy/MM/dd", new Date());
+      if (!isValid(parsed)) {
+        valid.replaceChildren("Please enter a valid date");
+      } else if (asgn.trim() === "") {
+        valid.replaceChildren("Please enter a valid name");
+      } else if (note.trim() === "") {
+        await window.api.addAssignment({
+          assignment: asgn,
+          due: due,
+          description: "No Description Given"
+        });
+      } else {
+        await window.api.addAssignment({
+          assignment: asgn,
+          due: due,
+          description: note
+        });
+      }
     }
+    
     
 
     form.reset();
