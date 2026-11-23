@@ -3,6 +3,7 @@ import path from 'node:path';
 import started from 'electron-squirrel-startup';
 import Database from 'better-sqlite3';
 
+
 // Creates a new database on the users local machine and declares the database object
 let db;
 

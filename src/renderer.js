@@ -13,10 +13,19 @@
  */
 
 import './index.css';
+import { format, formatDistanceToNow } from 'date-fns';
 
 console.log(
   '👋 This message is being logged by the renderer process, included via Vite',
 );
+
+const clock = document.getElementById('clock');
+
+function tick() {
+  clock.textContent = format(new Date(), 'EEEE, MMMM d');
+}
+
+
 
 const form = document.getElementById('form');
 const output = document.getElementById('output');
@@ -30,7 +39,9 @@ async function refresh() {
       checkbox.type = 'checkbox';
       checkbox.dataset.id = r.id;
       const text = document.createElement('span');
-      text.textContent = `${r.assignment}, due ${r.due}, Description ${r.description}`;
+      const dates = r.due.split("/");
+      const timeUntilDue = new Date(dates[0], dates[1], dates[2]);
+      text.textContent = `${r.assignment}, due ${formatDistanceToNow(timeUntilDue, { addSuffix: true })}, Description ${r.description}`;
       li.append(checkbox, text);
       return li;
     })
@@ -84,3 +95,5 @@ form.addEventListener('submit', async (e) => {
   }
 });
 refresh();
+tick();
+setInterval(tick(), 1000);
