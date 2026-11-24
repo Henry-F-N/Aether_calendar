@@ -38,10 +38,22 @@ async function refresh() {
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.dataset.id = r.id;
-      const text = document.createElement('span');
-      const parsed = parse(r.due, "yyyy/MM/dd", new Date());
-      text.textContent = `${r.assignment}, due ${formatDistanceToNow(parsed, { addSuffix: true })}, Description ${r.description}`;
-      li.append(checkbox, text);
+      const parsed = parse(r.due, 'yyyy/MM/dd', new Date());
+
+      const name = document.createElement('span');
+      name.className = 'name';
+      name.textContent = r.assignment;
+
+      const until = document.createElement('span');
+      until.className = 'until';
+      until.textContent = formatDistanceToNow(parsed, { addSuffix: true });
+
+      const dueDate = document.createElement('small');
+      dueDate.className = 'due-date';
+      dueDate.textContent = format(parsed, 'MMM d, yyyy');
+
+      li.title = r.description;
+      li.append(checkbox, name, until, dueDate);
       return li;
     })
   );
