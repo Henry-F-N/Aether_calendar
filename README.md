@@ -51,9 +51,12 @@ When the app is running, you can enter the components into the input fields and 
 
 Note: Be sure to enter the due date in the form yyyy/MM/dd, or else the app will not accept it
 
-Examples:
+Example:
 Name: Test
 Due date: 2026/12/31
+Description: this is a test
+
+Once you have clicked submit, the assignment should pop up in the assignment field below, where you can delete it just by clicked the check box next to its name.
 
 ## Roadmap
 
