@@ -32,10 +32,11 @@ function tick() {
 const form = document.getElementById('form');
 const output = document.getElementById('output');
 
-
+//makes the const for sorting
 const WEEK_START = { weekStartsOn: 1 }; // Monday; use 0 for Sunday
 const BUCKET_ORDER = ['Overdue', 'This week', 'Next week', 'Later'];
 
+//checks which bucket the assignment should go in
 function bucketFor(date, now = new Date()) {
   if (isBefore(date, startOfDay(now))) return 'Overdue';
   if (isSameWeek(date, now, WEEK_START)) return 'This week';
@@ -43,6 +44,8 @@ function bucketFor(date, now = new Date()) {
   return 'Later';
 }
 
+
+//constructs the element that is displayed on the app
 function buildItem(r, parsed) {
   const li = document.createElement('li');
   const checkbox = document.createElement('input');
@@ -66,6 +69,11 @@ function buildItem(r, parsed) {
   return li;
 }
 
+
+/**
+ * runs every time something changes in the database or when the user tries something.
+ * sorts the returned assignments and slots them into the buckets to be displayed
+ */
 async function refresh() {
   const rows = await window.api.listAssignments();
   const now = new Date();
@@ -90,6 +98,7 @@ async function refresh() {
   assignmentList.replaceChildren(...nodes);
 }
 
+//calls the deleteAssignment method if a checkbox is selected
 assignmentList.addEventListener('change', async (event) => {
     event.preventDefault();
     if (!event.target.matches('input[type="checkbox"]')) return;
@@ -105,6 +114,7 @@ assignmentList.addEventListener('change', async (event) => {
     
   });
 
+//hands the contents of the assignment boxes back to the main process
 form.addEventListener('submit', async (e) => {
   e.preventDefault(); // stops the page from reloading
 
@@ -116,6 +126,7 @@ form.addEventListener('submit', async (e) => {
     const due = document.getElementById('due').value;
     const note = document.getElementById('notes').value;
 
+    //checks to make sure there is a due date, then checks if its valid
     if (due.trim() === "") {
       valid.replaceChildren("Please enter a due date");
     } else {
@@ -124,7 +135,7 @@ form.addEventListener('submit', async (e) => {
         valid.replaceChildren("Please enter a valid date");
       } else if (asgn.trim() === "") {
         valid.replaceChildren("Please enter a valid name");
-      } else if (note.trim() === "") {
+      } else if (note.trim() === "") { //allows the user to not give a description
         await window.api.addAssignment({
           assignment: asgn,
           due: due,

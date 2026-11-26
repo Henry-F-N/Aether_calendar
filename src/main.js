@@ -21,6 +21,8 @@ function initDatabase() {
 }
 
 function registerIpcHandlers() {
+
+  //adds the given assignment to the database
   ipcMain.handle('assignments:add', (event, { assignment, due, description }) => {
     // Validates input
     if (typeof assignment !== 'string' || !assignment.trim() || typeof due !== 'string' || !due) {
@@ -35,10 +37,12 @@ function registerIpcHandlers() {
     return { id: info.lastInsertRowid };
   });
 
+  //returns the contents of the database to be displayed
   ipcMain.handle('assignments:list', () => {
     return db.prepare('SELECT * FROM assignments ORDER BY due').all();
   });
 
+  //removes a given assignment from the database
   ipcMain.handle('assignment:remove', (event, id ) => {
     if (!Number.isInteger(id)) {
       throw new Error("must be valid ID");
@@ -106,5 +110,3 @@ app.on('window-all-closed', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.

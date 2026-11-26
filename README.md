@@ -22,22 +22,38 @@ There was never a calendar that I was satisfied with, but I needed a way to trac
 
 ## Setup
 
-Step-by-step: how does someone who just cloned your repo get it
-running?
+Prerequisites:
+- Node.js and npm
+- Git
+- A C/C++ build toolchain with Python (such as VSCode)
 
-```bash
-git clone https://github.com/you/your-project
-cd your-project
-./install.sh   # or whatever
+```git
+git clone https://github.com/Henry-F-N/Aether_calendar.git
+cd Aether_calendar
+```
+
+In the terminal
+
+```
+npm install
+npm start
+```
+
+if you recieve a module not found error, run
+
+```
+npx electron-rebuild
 ```
 
 ## Usage
 
-How to actually run the thing, with examples.
+When the app is running, you can enter the components into the input fields and click submit,after which the assignment will appear in the field below.
 
-```bash
-./backup.sh ~/Documents
-```
+Note: Be sure to enter the due date in the form yyyy/MM/dd, or else the app will not accept it
+
+Examples:
+Name: Test
+Due date: 2026/12/31
 
 ## Roadmap
 
