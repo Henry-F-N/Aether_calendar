@@ -5,8 +5,17 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <h4 id="clock"></h4>
+    <h1> Aether Calendar</h1>
+    <p>Keep track of all your tasks here!</p>
     <script type="module" src="/src/renderer.js"></script>
+    <form id="form">
+      <input id="name" type="text" placeholder="Assignment Name" />
+      <input id="due" type="text" placeholder="YYYY/MM/DD" />
+      <textarea id="notes" placeholder="Notes"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <ul id = "valid"></ul>
+    <ul id="assignmentList"></ul>
   </body>
 </html>

@@ -1,3 +1,12 @@
+html {
+  min-height: 100%;
+  background: 
+    radial-gradient(circle at 50% 40%, #456990 0%, transparent 80%),
+    #012622;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 body {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
@@ -5,4 +14,52 @@ body {
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
+  color: #E4FDE1;
+  background-repeat: no-repeat;
+}
+
+li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.group-heading {
+  font-size: 1.25em;
+  color :burlywood;
+}
+
+.until {
+  color: #F45B69;
+}
+
+.due-date {
+  font-size: 0.75em;
+  color: #888;
+}
+
+#assignmentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#valid {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+}
+
+input[type="text"],
+textarea {
+  background-color: #012622; /* Changes the box fill color */
+  color: #E4FDE1;            /* Changes the typed text color */
+  border: 2px solid #888; /* Changes the border width, style, and color */
+}
+
+#clock {
+  color: #028090;
 }
