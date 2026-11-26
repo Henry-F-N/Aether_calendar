@@ -13,7 +13,9 @@
  */
 
 import './index.css';
-import { format, formatDistanceToNow, parse, isValid } from 'date-fns';
+import { parse, format, formatDistanceToNow, isSameWeek, 
+  addWeeks, isBefore, startOfDay, isValid 
+} from 'date-fns';
 
 console.log(
   '👋 This message is being logged by the renderer process, included via Vite',
@@ -30,34 +32,65 @@ function tick() {
 const form = document.getElementById('form');
 const output = document.getElementById('output');
 
+
+const WEEK_START = { weekStartsOn: 1 }; // Monday; use 0 for Sunday
+const BUCKET_ORDER = ['Overdue', 'This week', 'Next week', 'Later'];
+
+function bucketFor(date, now = new Date()) {
+  if (isBefore(date, startOfDay(now))) return 'Overdue';
+  if (isSameWeek(date, now, WEEK_START)) return 'This week';
+  if (isSameWeek(date, addWeeks(now, 1), WEEK_START)) return 'Next week';
+  return 'Later';
+}
+
+function buildItem(r, parsed) {
+  const li = document.createElement('li');
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.dataset.id = r.id;
+
+  const name = document.createElement('span');
+  name.className = 'name';
+  name.textContent = r.assignment;
+
+  const until = document.createElement('span');
+  until.className = 'until';
+  until.textContent = formatDistanceToNow(parsed, { addSuffix: true });
+
+  const dueDate = document.createElement('small');
+  dueDate.className = 'due-date';
+  dueDate.textContent = format(parsed, 'MMM d, yyyy');
+
+  li.title = r.description;
+  li.append(checkbox, name, until, dueDate);
+  return li;
+}
+
 async function refresh() {
   const rows = await window.api.listAssignments();
-  assignmentList.replaceChildren(
-    ...rows.map((r) => {
-      const li = document.createElement('li');
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.dataset.id = r.id;
-      const parsed = parse(r.due, 'yyyy/MM/dd', new Date());
+  const now = new Date();
 
-      const name = document.createElement('span');
-      name.className = 'name';
-      name.textContent = r.assignment;
+  // parse once, sort soonest first, then bucket
+  const items = rows
+    .map((r) => ({ r, parsed: parse(r.due, 'yyyy/MM/dd', new Date()) }))
+    .sort((a, b) => a.parsed - b.parsed);
 
-      const until = document.createElement('span');
-      until.className = 'until';
-      until.textContent = formatDistanceToNow(parsed, { addSuffix: true });
+  const groups = Object.fromEntries(BUCKET_ORDER.map((b) => [b, []]));
+  for (const item of items) groups[bucketFor(item.parsed, now)].push(item);
 
-      const dueDate = document.createElement('small');
-      dueDate.className = 'due-date';
-      dueDate.textContent = format(parsed, 'MMM d, yyyy');
+  const nodes = [];
+  for (const bucket of BUCKET_ORDER) {
+    if (groups[bucket].length === 0) continue; // skip empty sections
+    const heading = document.createElement('li');
+    heading.className = 'group-heading';
+    heading.textContent = bucket;
+    nodes.push(heading, ...groups[bucket].map(({ r, parsed }) => buildItem(r, parsed)));
+  }
 
-      li.title = r.description;
-      li.append(checkbox, name, until, dueDate);
-      return li;
-    })
-  );
-  assignmentList.addEventListener('change', async (event) => {
+  assignmentList.replaceChildren(...nodes);
+}
+
+assignmentList.addEventListener('change', async (event) => {
     event.preventDefault();
     if (!event.target.matches('input[type="checkbox"]')) return;
     if (event.target.checked) {
@@ -71,7 +104,6 @@ async function refresh() {
     }
     
   });
-}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault(); // stops the page from reloading

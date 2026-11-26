@@ -24,6 +24,11 @@ li {
   gap: 0.6rem;
 }
 
+.group-heading {
+  font-size: 1.25em;
+  color :burlywood;
+}
+
 .until {
   color: #F45B69;
 }
