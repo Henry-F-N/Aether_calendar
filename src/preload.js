@@ -5,6 +5,7 @@
 
 const { contextBridge, ipcRenderer } = require('electron');
 
+//the bridge between main and the render
 contextBridge.exposeInMainWorld('api', {
   addAssignment: (data) => ipcRenderer.invoke('assignments:add', data),
   listAssignments: () => ipcRenderer.invoke('assignments:list'),
